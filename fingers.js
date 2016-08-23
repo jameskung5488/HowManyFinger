@@ -10,13 +10,13 @@ if (document.getElementById("input-box").value == numberOfFingers)
 {
 document.getElementById("yes").style.display = 'block';
 document.getElementById("no").style.display = 'none';
-document.getElementById("img-wrapper").style.display = 'none';
+document.getElementById("img-placeholder").style.visibility = 'hidden';
 }
 else
 {
 document.getElementById("no").style.display = 'block';
 document.getElementById("yes").style.display = 'none';
-document.getElementById("img-wrapper").style.display = 'none';
+document.getElementById("img-placeholder").style.visibility = 'hidden';
 }
 
 
@@ -56,6 +56,7 @@ document.getElementById("five-fingers").style.visibility="visible";
 else {
 document.getElementById("five-fingers").style.visibility="hidden";
 }
+
 }
 /*
 if (isNaN() == true)
