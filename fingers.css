@@ -1,7 +1,6 @@
 
 body {
-	background-color: teal;
-	background: radial-gradient(lightblue 0%, teal 90%);
+	background: radial-gradient(#FFF176, #F57F17);
 	max-height: 100vh;
 }
 
@@ -9,34 +8,35 @@ body {
 	width: 700px;
 	margin: 150px auto;
 	position: relative;
-	height: 600px;
+	height: 465px;
 	background-color: #eee;
-	padding: 10px 40px;
-	border-radius: 10px;
+	border-radius: 0px;
+	    box-shadow: 0px 50px 30px -30px rgba(0, 0, 0, 0.3);
 }
 
 #input-wrapper {
 	width: 700px;
-	margin: 20px auto;
+	margin: 40px auto 20px auto;
 	position: absolute;
 	bottom: 10px;
 	text-align: center;
+	display: block;
 
 }
 
 #img-wrapper {
 	max-height: 200px;
 	min-height: 280px;
-	margin-bottom: 0px;
+	margin-bottom: 20px;
 	display: block;
 }
 
 #no-fingers, #one-finger, #two-fingers, #three-fingers, #four-fingers, #five-fingers {
 visibility: hidden;
-	max-height: 400px;
+	max-height: 200px;
 	position: absolute;
-	top: 30px;
-	left: calc(50% - 200px);
+	top: 100px;
+	left: calc(50% - 80px);
 	margin-top: 40px ;
 	margin-bottom: -50px;
 }
@@ -44,26 +44,26 @@ visibility: hidden;
 #img-placeholder
 {
 
-visibility: hidden;
-	max-height: 200px;
-	position: absolute;
-	top: 150px;
-	left: 100px;
+	height: 400px;
+	width: 400px;
+position: absolute;
+	top: 30px;
+	left: calc(50% - 200px);
 	margin-top: 40px ;
 	margin-bottom: -50px;
-	float: left;
+	display: block;
 }
 
 
 #yes, #no {
 display: none;
-	font-family: helvetica, arial, sans-serif;
-color: #222;
-font-size: 48px;
-	margin: 10px auto 50px auto;
+	font-family: 'roboto', helvetica, arial, sans-serif;
+color: #666;
+font-size: 18px;
+	margin: 25px auto 50px auto;
 	position: relative;
 	height: 40px;
-	font-weight: bold;
+	font-weight: normal;
 	height: 50px; 
 	text-align: center;
 }
@@ -72,40 +72,48 @@ font-size: 48px;
 
 display: block;
 color: #222;
-font-size: 48px;
+font-size: 18px;
 text-align: center;
 }
 
 #input-box {
 	
-	padding: 10px;
-	margin: 20px auto 50px auto;
-	width: 40px;
-	background-color: #fff;
-border: solid 2px teal;
-color: teal;
-font-size: 46px;
-text-align: center;
-border-radius: 5px;
+padding: 10px ;
+  border: 1px solid #999;
+  border-radius: 3px;
+  display: inline-block;
+  width: 40px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 16px;
+  text-align: center;
 
 }
 
 #guess {
 
-	font-size: 36px;
-	margin-left: 20px;
-	font-family: helvetica, arial, sans-serif;
-	padding: 15px;
-	background-color: #fff;
-	font-weight: bold;
-	border: solid 2px teal;
-	color: #222;
-	border-radius: 5px;
+padding: 10px 20px;
+  border-radius: 3px;
+  border: none;
+  background: #FF6F00;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  cursor: pointer;
+  font-family: 'roboto', helvetica, sans-serif;
+}
+
+#guess:hover {
+
+	 background: #e66400;
 }
 
 .guess:focus {
 	
-	border: solid 2px pink;
+	  border-color: #FF6F00;
 
 }
 
@@ -113,17 +121,21 @@ border-radius: 5px;
 #input-box:focus {
 	
 	border: solid 2px #fff;
+	  border: 1px solid #F57F17;
+  border-radius: 3px;
 
 }
 
 
 .input-label {
 
-	font-family: helvetica, arial, sans-serif;
-	font-weight: bold;
-	padding: 10px;
-	color: #222;
-	font-size: 40px;
+	font-family: 'roboto', helvetica, arial, sans-serif;
+	font-weight: normal;
+	padding: 20px 0px;
+	color: #666;
+	font-size: 20px;
 	text-align: center;
+	width: 100%;
+	border-bottom: solid 1px #ccc;
 	display: inline-block;
 }

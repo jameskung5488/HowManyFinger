@@ -10,9 +10,10 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800|Roboto" rel="stylesheet">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="fingers.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="js/fullPage/fullPage.js-master/jquery.fullPage.min"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -20,9 +21,10 @@
         <![endif]-->
 
    <div id="wrapper"> 
+   <label class="input-label">How many fingers am I holding up?</label>
    <span id="yes">That's right!</span>
    <span id="no">Nope!</span>
-  <img id="img-placeholder" src="Images/no-fingers.png"/>
+ <div id="img-placeholder"></div>
    <img id="no-fingers" src="Images/no-fingers.png"/>
    <img id="one-finger" src="Images/one-finger.png"/>
    <img id="two-fingers" src="Images/two-fingers.png"/>
@@ -30,7 +32,7 @@
         <img id="four-fingers" src="Images/four-fingers.png"/>
            <img id="five-fingers" src="Images/five-fingers.png"/>
 <div id="input-wrapper">
-<input type="text" id="input-box" maxlength="1"></input><button id="guess">Guess!</button><br><label class="input-label">How many fingers am I holding up?</label>
+<input type="text" id="input-box" maxlength="1"></input><button id="guess">Guess!</button><br>
 </div>
 </div>
 
