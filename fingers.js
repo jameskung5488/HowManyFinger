@@ -58,11 +58,13 @@ document.getElementById("five-fingers").style.visibility="hidden";
 }
 
 }
-/*
-if (isNaN() == true)
+
+if (isNaN("input-box").value == true)
 {
 alert("Oops! please use only numbers")
 }
-
+else {
+	
+}
 }
 */
