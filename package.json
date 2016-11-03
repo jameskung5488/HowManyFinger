@@ -1,0 +1,22 @@
+{
+  "name": "fingers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fingers.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesbyrne89/How-Many-Fingers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesbyrne89/How-Many-Fingers/issues"
+  },
+  "homepage": "https://github.com/jamesbyrne89/How-Many-Fingers#readme",
+  "devDependencies": {
+    "normalize.css": "^5.0.0"
+  }
+}
