@@ -13,18 +13,182 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800|Roboto" rel="stylesheet">
         <link rel="stylesheet" href="node_modules/normalize.css">
         <link rel="stylesheet" href="fingers.css">
-        <!-- Scatter JS. -->
-        <script src="js/scatter.min.js"></script>
-        <script src="js/eos.min.js"></script>
-        
+
+
+    <!-- Scatter JS. -->
+    <script src="js/scatter.min.js"></script>
+    <script src="js/eos.min.js"></script>
+    
+    <script>
+    
+    var g_curwalletname = '';
+    var g_curtable = '';
+    var g_curaction = '';
+    var g_eos = '';
+    var g_abidata = '';
+    var eosjs = '';
+    var eos = null;
+    var alead=false;
+    
+    
+    function EosjsInit() {
+      
+      var eosConfig = {
+        chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
+        httpEndpoint: 'https://mainnet.eoscannon.io',
+        verbose: true
+      }
+
+      g_eos = Eos(eosConfig);
+    }
+      // EOS RPC 网络设置
+      var network = {
+        blockchain:'eos',
+        protocol:'https',
+        host:'mainnet.eoscannon.io',
+        port:443,
+        chainId:'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
+      };
+      var currentAccount = null;
+    var isconnect = false;
+      // 连接
+      function connect(){
+        scatter.connect('MY_GAME_NAME').then(connected => {
+
+        });
+      }
+    
+  function ask(){
+          
+          var contract = 'okkkkkkkkkkk';
+          var table = 'stat';
+          var lower = $('#inp3').val();
+          var scope = $('#inp3').val();
+          g_eos.getTableRows(true, contract, scope, table, "",lower ,-1, 1, function (error, data) {
+          if (error == null) {
+            var cnt = data["rows"].length;
+            if (cnt == 0){document.getElementById('alr').style.color = "green";document.getElementById('alr').innerText=$('#inp3').val()+"可以注册";$("#alr").show();alead=false;}
+            else {document.getElementById('alr').style.color = "red";document.getElementById('alr').innerText=$('#inp3').val()+"已被注册";$("#alr").show();alead=true;}
+            //$("#inp3").html(JSON.stringify(data, null, 2));
+            //document.getElementById("inp2").value=(((data["rows"][0]["balance"]).split(" ")[0])+' '+lower);
+          } else {
+            //$("#inp3").html(error);
+            console.log(error);
+          }
+        })
+      } 
+    
+    
+      // 登录，获取 EOS 账户
+     function login(){
+      $("#alr").hide();
+     //setInterval(ask, 100);
+      if (isconnect ==false ){
+          connect();
+        // scatter.forgetIdentity();
+        scatter.getIdentity({accounts:[network]}).then(result => {
+          currentAccount =  result.accounts[0];
+
+          $("#loginbtn").html('退出'+currentAccount.name).css('color', '#1E90FF');
+          isconnect = true;
+
+        }).catch(error => {
+          alert('error:'+JSON.stringify(error));
+        });
+      }
+      else
+        {
+         scatter.forgetIdentity().then(function () {
+            isconnect = false;
+           currentAccount = null;
+            $("#loginbtn").html('登录').css('color', '#1E90FF');
+
+          }); 
+        }
+      }
+    
+      // 转账
+      function transfer(){
+        if (currentAccount == null) {
+            alert('请先登录 EOS 账户');
+        }
+      ask();
+      if( alead==true ){
+          alert('此代币已经被注册，换个符号试试？~');
+          return false;
+        }
+        // alert(network.protocol+'://'+network.host);
+    var memo = '1-' + $('#inp1').val() + '-' + $('#inp2').val() + '-' + $('#inp3').val();
+        var eos = scatter.eos(network, Eos);
+        eos.transfer(currentAccount.name, 'james5432154', '3.0000 EOS', memo).then(result => {
+          //alert('result:'+JSON.stringify(result));
+          alert('发币成功！需要在钱包中显示代币的用户请根据页面下方提示在钱包中自助添加代币');
+
+        }).catch(error => {
+      var str=JSON.stringify(error);
+              if (str=="{}")alert('节点开小差了  我们再试试吧~');
+          else alert('error:'+JSON.stringify(error));
+        });
+      }
+      
+    
+       function transfer1(){
+        if (currentAccount == null) {
+            alert('请先登录 EOS 账户T1');
+        }
+      ask();
+      if( alead==true ){
+          alert('此代币已经被注册，换个符号试试？~');
+          return false;
+        }
+        // alert(network.protocol+'://'+network.host);
+    var memo = '1-' + $('#inp1').val() + '-' + $('#inp2').val() + '-' + $('#inp3').val();
+        var eos = scatter.eos(network, Eos);
+        eos.transfer(currentAccount.name, 'james5432154', '3.0000 EOS', memo).then(result => {
+          //alert('result:'+JSON.stringify(result));
+          alert('发币成功！需要在钱包中显示代币的用户请根据页面下方提示在钱包中自助添加代币');
+
+        }).catch(error => {
+      var str=JSON.stringify(error);
+              if (str=="{}")alert('节点开小差了  我们再试试吧~');
+          else alert('error:'+JSON.stringify(error));
+        });
+      }   
+    
+    
+    
+    function eosflare(){
+          if (currentAccount == null) {
+            alert('请先登录 EOS 账户');
+          }
+      window.location.href=('https://eosflare.io/account/'+currentAccount.name);
+      }
+    
+    
+    
+    
+    $(function () {
+      EosjsInit();
+      $("#alr").hide();
+      
+      $('#inp3').on('keyup', function(){
+      ask();
+      });
+    })
+    </script>
+
+
     </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
+  
    <div id="wrapper"> 
-   <div class="col-md-12"><button type="button" id="loginbtn" class="btn btn-finish btn-fill btn-primary btn-wd" onclick="login()">登录</button></div> 
+   <div class="col-md-12"><button type="button" id="loginbtn" class="btn btn-finish btn-fill btn-primary btn-wd" onclick="login()">登录</button></div>
+
+
+
    <label class="input-label">How many fingers am I holding up?</label>
    <span id="yes">That's right!</span>
    <span id="no">Nope!</span>
@@ -32,9 +196,14 @@
    <img id="no-fingers" src="Images/no-fingers.png"/>
    <img id="one-finger" src="Images/one-finger.png"/>
    <img id="two-fingers" src="Images/two-fingers.png"/>
-     <img id="three-fingers" src="Images/three-fingers.png"/>
-        <img id="four-fingers" src="Images/four-fingers.png"/>
-           <img id="five-fingers" src="Images/five-fingers.png"/>
+   <img id="three-fingers" src="Images/three-fingers.png"/>
+   <img id="four-fingers" src="Images/four-fingers.png"/>
+   <img id="five-fingers" src="Images/five-fingers.png"/>
+
+   <script>
+   document.getElementById("no-fingers").style.visibility="visible";
+   </script>
+
 <div id="input-wrapper">
 <input type="text" id="input-box" maxlength="1"></input><button id="guess">Guess!</button><br>
 </div>
@@ -44,6 +213,109 @@
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="fingers.js"></script>
+
+
+
+
+
+
+<!--
+  <div align="center"> <font color="pink"  size="5"> ~莫与一键发币~       </font>   </div>
+-->  
+  <br /><br />
+  <div align="center">    </div>
+  <div class="card">
+        <div class="row">
+                              
+                                    
+          <div class="col-sm-5 col-lg-6">
+                <div class="form-group">
+                    <label> <font color="pink" size="3"> 请输入接收币账户名<br />（12位EOS账户名）</font> </label>
+                    <input type="text" class="form-control" id="inp1" seg="1" placeholder="例： developstdio">
+                    <script>
+                        function accountname(v) {
+                            if (v.value == '') {
+                                return false;
+                            }
+                            //大写转小写
+                            v.value = v.value.toLowerCase();
+                            //判断是否为英文
+
+                            //判断是否超过长度
+                            if (v.value.length > 12) {
+                                return v.value = v.value.substr(0, 12);
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+                                      <br /><br />
+                                      <div class="col-sm-5 col-sm-offset-1">
+                <div class="form-group">
+                    <label><font color="pink" size="3">请输入发币数量<br />（小数点后为精确度）</font></label>
+                    <input type="text" class="form-control" id="inp2" seg="2" placeholder="例： 1000000000.0000" onKeyUp="number(this);">
+
+                    <script>
+                        function number(v) {
+                            if (v.value == '') {
+                                return false;
+                            }
+                            //大写转小写
+
+                            //判断是否为英文
+
+                            //判断是否超过长度
+                            if (v.value.length > 17) {
+                                return v.value = v.value.substr(0, 17);
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        
+                        <br /><br />
+                       <div class="col-sm-5 col-lg-6">
+                <div class="form-group">
+                    <label color=#ffffff><font color="pink" size="3">请输入代币符号<br />（1-7位的大写字母）</font></label>
+                    <input type="text" class="form-control" id="inp3" seg="3" placeholder="例： MOYU" onKeyUp="dothis(this);">
+                    <script>
+                        function dothis(v) {
+                            if (v.value == '') {
+                                return false;
+                            }
+                            //小写转大写
+                            v.value = v.value.toUpperCase();
+                            //判断是否为英文
+                            if (!/^([A-Za-z]+\s?)*[A-Za-z]$/.test(v.value)) {
+                                return v.value = v.value.substr(0, v.value.length - 1);
+                            }
+                            //判断是否超过长度
+                            if (v.value.length > 7) {
+                                return v.value = v.value.substr(0, 7);
+                            }
+                        }
+                    </script>
+          <font color="red"  size="3" id="alr" > 已被注册 </font> 
+                </div>
+            </div>
+        
+      <div class="col-sm-5 col-sm-offset-1">
+                <div class="form-group">
+                    <label><font color="pink" size="3">一键发币</font></label> <br />
+                    <button type="button" id="transfer" class='btn btn-finish btn-fill btn-primary btn-wd' onclick="transfer()">一键发币</button>
+                </div>
+            </div>
+        
+                                  </div>
+    
+  </div>
+  <div class="my-protocol right-align">
+    <a href="javascript:;" id="all" onclick="eosflare()">查询领取状态</a>
+  </div>
+
+
+
+
 
        
     </body>
