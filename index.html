@@ -10,9 +10,13 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800|Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800|Roboto" rel="stylesheet">
         <link rel="stylesheet" href="node_modules/normalize.css">
         <link rel="stylesheet" href="fingers.css">
+        <!-- Scatter JS. -->
+        <script src="js/scatter.min.js"></script>
+        <script src="js/eos.min.js"></script>
+        
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -20,6 +24,7 @@
         <![endif]-->
 
    <div id="wrapper"> 
+   <div class="col-md-12"><button type="button" id="loginbtn" class="btn btn-finish btn-fill btn-primary btn-wd" onclick="login()">登录</button></div> 
    <label class="input-label">How many fingers am I holding up?</label>
    <span id="yes">That's right!</span>
    <span id="no">Nope!</span>
