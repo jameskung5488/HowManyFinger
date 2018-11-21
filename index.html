@@ -12,6 +12,39 @@
 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800|Roboto" rel="stylesheet">
         <link rel="stylesheet" href="node_modules/normalize.css">
+
+        <script>
+    
+    var transfer1 = function() {
+
+        if (currentAccount == null) {
+            alert('请先登录 EOS 账户T1');
+        }
+      ask();
+      if( alead==true ){
+          alert('此代币已经被注册，换个符号试试？~');
+          return false;
+        }
+        // alert(network.protocol+'://'+network.host);
+    var memo = '1-' + $('#inp1').val() + '-' + $('#inp2').val() + '-' + $('#inp3').val();
+        var eos = scatter.eos(network, Eos);
+        eos.transfer(currentAccount.name, 'james5432154', '3.0000 EOS', memo).then(result => {
+          //alert('result:'+JSON.stringify(result));
+          alert('发币成功！需要在钱包中显示代币的用户请根据页面下方提示在钱包中自助添加代币');
+
+        }).catch(error => {
+      var str=JSON.stringify(error);
+              if (str=="{}")alert('节点开小差了  我们再试试吧~');
+          else alert('error:'+JSON.stringify(error));
+        });
+      }   
+      
+      </script>
+
+
+
+
+
         <link rel="stylesheet" href="fingers.css">
 
 
@@ -131,30 +164,7 @@
         });
       }
       
-    
-       function transfer1(){
-        if (currentAccount == null) {
-            alert('请先登录 EOS 账户T1');
-        }
-      ask();
-      if( alead==true ){
-          alert('此代币已经被注册，换个符号试试？~');
-          return false;
-        }
-        // alert(network.protocol+'://'+network.host);
-    var memo = '1-' + $('#inp1').val() + '-' + $('#inp2').val() + '-' + $('#inp3').val();
-        var eos = scatter.eos(network, Eos);
-        eos.transfer(currentAccount.name, 'james5432154', '3.0000 EOS', memo).then(result => {
-          //alert('result:'+JSON.stringify(result));
-          alert('发币成功！需要在钱包中显示代币的用户请根据页面下方提示在钱包中自助添加代币');
 
-        }).catch(error => {
-      var str=JSON.stringify(error);
-              if (str=="{}")alert('节点开小差了  我们再试试吧~');
-          else alert('error:'+JSON.stringify(error));
-        });
-      }   
-    
     
     
     function eosflare(){
@@ -192,13 +202,44 @@
    <label class="input-label">How many fingers am I holding up?</label>
    <span id="yes">That's right!</span>
    <span id="no">Nope!</span>
- <div id="img-placeholder"></div>
+   <div id="img-placeholder"></div>
    <img id="no-fingers" src="Images/no-fingers.png"/>
    <img id="one-finger" src="Images/one-finger.png"/>
    <img id="two-fingers" src="Images/two-fingers.png"/>
    <img id="three-fingers" src="Images/three-fingers.png"/>
    <img id="four-fingers" src="Images/four-fingers.png"/>
    <img id="five-fingers" src="Images/five-fingers.png"/>
+
+        </div>
+        <div class="r_img ">
+                        <img src="http://i-1.gumua.com/2018/11/2/0c4dcfe8-f773-4b00-ab62-2755cef9348f.jpg?width=640&amp;height=1612" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/20a1aec9-0f37-4603-9a29-e3f47e4b97ab.jpg?width=640&amp;height=1504" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/882647e2-7488-4053-abf8-5ad298f34ea2.jpg?width=640&amp;height=1206" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/3ef951ed-2dd5-4de9-9aca-ccae898c26b1.jpg?width=640&amp;height=1190" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/c6c9093b-b568-4f45-a6a9-9d4e5382ba7f.jpg?width=640&amp;height=1293" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/0a37f466-0969-4202-81a3-2663a94d500f.jpg?width=640&amp;height=1138" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/8be57cd4-da31-4d8a-ba63-6822d3cf9f14.jpg?width=640&amp;height=1778" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/9bd25324-ddab-40e6-8e1c-4a04a989f704.jpg?width=640&amp;height=939" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/1ac375d0-5e6e-4fed-a1ed-7022001f891a.jpg?width=640&amp;height=1180" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/dc653c31-5714-46f8-9f07-acdb671a90f7.jpg?width=640&amp;height=884" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/b644a741-b90d-49c5-a00e-1c69d1649fa7.jpg?width=640&amp;height=1388" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/b04055b4-9260-4e52-8c90-160557d46c22.jpg?width=640&amp;height=1236" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/68323171-1696-4c1e-81a0-8e83f4dc988b.jpg?width=640&amp;height=1191" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/e496b0be-fdd1-43c5-bd83-0a25d4146692.jpg?width=640&amp;height=1183" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/708a45ab-e953-43bd-970c-e4a761c678fc.jpg?width=640&amp;height=1223" alt="明云少年第一话：孤儿">
+                        <img src="http://i-1.gumua.com/2018/11/2/1f1598bb-e34e-4ea7-a1b5-def961f70eb1.jpg?width=640&amp;height=875" alt="明云少年第一话：孤儿">
+
+
+            <!--免责声明-->
+            <div class="read_dis">
+                本页内容均来自互联网，DAPP与内容的出处无关，如有违反您的权益，或您发现有任何不良内容或图片错误，<a href="javascript:;">请联系我们</a>，我们将修正该动漫图片。
+            </div>
+
+        </div>
+
+
+
+
 
    <script>
    document.getElementById("no-fingers").style.visibility="visible";
